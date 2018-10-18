@@ -1,0 +1,52 @@
+cc_binary {
+    name: "helloaidl",
+    
+
+    shared_libs: [
+        "libcutils",
+        "libutils",
+        "liblog",
+        "libbinder",
+    ],
+
+
+    cppflags: [
+        "-fexceptions",
+    ],
+
+
+    local_include_dirs: [
+        "include",
+    ],
+
+
+    export_include_dirs: [
+        "include",
+    ],
+
+    cflags: [
+        "-Werror",
+        "-Wall",
+        "-Wextra",
+    ],
+
+
+     aidl: {
+        local_include_dirs: ["aidl"]
+    },
+
+
+     srcs: [
+        // AIDL files for camera interfaces
+        // The headers for these interfaces will be available to any modules that
+        // include libcamera_client, at the path "aidl/package/path/BnFoo.h"
+        "aidl/android/os/IHelloService.aidl",
+
+        // Source for camera interface parcelables, and manually-written interfaces
+        "server/main.cpp",
+        "service/HelloService.cpp",
+    ],
+
+
+}
+
