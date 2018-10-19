@@ -2,8 +2,10 @@ cc_binary {
     // ANDROIDMK TRANSLATION ERROR: unsupported assignment to LOCAL_COPY_HEADERS
     // LOCAL_COPY_HEADERS := ../include/IHelloService.h
 
-    srcs: ["client/aidltestclient.cpp",
-           "client/IHelloService.cpp",
+    srcs: [
+           "aidl/android/os/IHelloService.aidl",
+           "aidl/sec/ISecResultReceiver.aidl",
+           "client/aidltestclient.cpp",
     ],
 
     shared_libs: [
@@ -14,9 +16,13 @@ cc_binary {
     ],
 
     name: "aidltestclient",
+
+    aidl: {
+        local_include_dirs: ["aidl"]
+    },
+
     
     local_include_dirs: [
-        "include",
     ],
 
 }
